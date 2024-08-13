@@ -8,7 +8,25 @@ import Routes from "../utility/Routes";
 const bgImage = require('../assets//background2.png');
 const logo = require('../assets/logo.png');
 
-export default function SplashScreen({ navigation }: { navigation: any }) {
+
+import { NavigationProp, ParamListBase } from '@react-navigation/native';
+import { useEffect } from "react";
+import { isAuthenticated } from "../utility/db";
+
+type SplashScreenProps = {
+    navigation: NavigationProp<ParamListBase>;
+  };
+
+export default function SplashScreen({ navigation }: SplashScreenProps) {
+
+    useEffect(() => {
+        (async ()=> {
+          if( await isAuthenticated()){
+            navigation.navigate(Routes.HOME);
+          }
+        })()
+      }, [])
+
   return (
       <ImageBackground source={bgImage} style={{
           flex: 1,
@@ -32,7 +50,7 @@ export default function SplashScreen({ navigation }: { navigation: any }) {
                       fontSize: 18
                   }}
                   color={"white"}
-                  onPress={() => navigation.replace(Routes.LOGIN)}
+                  onPress={() => navigation.navigate(Routes.LOGIN)}
               >
                   Login
               </Button>
