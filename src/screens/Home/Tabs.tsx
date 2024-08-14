@@ -13,7 +13,7 @@ import AssestmentTab from './AssestmentTab.tsx';
 import AttendanceTab from './AttendanceTab';
 import { NavigationProps } from '../../props/navigation-props.ts';
 
-
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function TabBtm({ navigation }: NavigationProps) {
   return (
@@ -23,30 +23,53 @@ export default function TabBtm({ navigation }: NavigationProps) {
           headerShown: false,
           tabBarActiveTintColor: color.blue,
           tabBarInactiveTintColor: '#555',
-   
+
         })}
       >
         <Tab.Screen
           name="Home"
-          options={{ tabBarLabel: 'Home' }}
+          options={{
+            tabBarLabel: 'Home',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="home" color={color} size={size} />
+            ),
+          }}
         >
           {(props) => <HomeTabScreen {...props} extraData={navigation} />}
         </Tab.Screen>
         <Tab.Screen
           name="My Work"
-          options={{ tabBarLabel: 'My Work' }}
+          options={{
+            tabBarLabel: 'My Work',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="folder-network" color={color} size={size} />
+            ),
+
+          }}
         >
           {(props) => <AssestmentTab {...props} extraData={navigation} />}
         </Tab.Screen>
         <Tab.Screen
           name="Attendance"
-          options={{ tabBarLabel: 'Attendance' }}
+          options={{
+            tabBarLabel: 'Attendance',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="calendar" color={color} size={size} />
+            ),
+
+          }}
         >
           {(props) => <AttendanceTab {...props} extraData={navigation} />}
         </Tab.Screen>
         <Tab.Screen
           name="Profile"
-          options={{ tabBarLabel: 'Profile' }}
+          options={{
+            tabBarLabel: 'Profile',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="account" color={color} size={size} />
+            ),
+
+          }}
         >
           {(props) => <ProfileTab {...props} extraData={navigation} />}
         </Tab.Screen>

@@ -11,13 +11,18 @@ import api from "../utility/fetcher";
 import Storage from "../utility/Storage";
 import { isAuthenticated } from "../utility/db";
 
+const tec = require('../assets/tec_logo/tec.png')
+
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
+import Image from "../components/Image";
 
 type LoginScreenProps = {
-    navigation: NavigationProp<ParamListBase>;
-  };
+  navigation: NavigationProp<ParamListBase>;
+};
 
-export default function LoginScreen({ navigation } : LoginScreenProps) {
+
+
+export default function LoginScreen({ navigation }: LoginScreenProps) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -47,19 +52,19 @@ export default function LoginScreen({ navigation } : LoginScreenProps) {
           Storage.save('token', data.token, Storage.DEFAULT);
           navigation.navigate(Screens.HOME);
         } else {
-            Alert.alert('Login Attempt Failed' , 'Invalid Email or Password')
-            setLoading(false);
-        }
-        
-    } else {
-          Alert.alert('Login Attempt Failed' , 'Invalid Email or Password')
+          Alert.alert('Login Attempt Failed', 'Invalid Email or Password')
           setLoading(false);
         }
+
+      } else {
+        Alert.alert('Login Attempt Failed', 'Invalid Email or Password')
+        setLoading(false);
+      }
     } catch (error) {
-        if(error instanceof Error) {
-          Alert.alert('Login Attempt Failed' , error.message)
-          setLoading(false);
-        }
+      if (error instanceof Error) {
+        Alert.alert('Login Attempt Failed', error.message)
+        setLoading(false);
+      }
     }
 
   }
@@ -67,7 +72,12 @@ export default function LoginScreen({ navigation } : LoginScreenProps) {
 
   return (
     <Center flex bg={color.white}>
+      <Image source={tec} width={'100%'} height={200} style={{
+        resizeMode: 'contain'
+      }} />
       <Box p={6} w={"80%"} mb={20}>
+        <Center>
+        </Center>
         <Text fontSize={28} fontWeight={"bold"} ml={8} color={color.blue}>
           Login to Continue
         </Text>
@@ -81,7 +91,8 @@ export default function LoginScreen({ navigation } : LoginScreenProps) {
           rounded={3}
           p={8}
           variant="outline"
-          variantcolor={color.white}
+          variantcolor={color.dark}
+          hintColor={color.gray}
           onChangeText={setEmail}
         />
       </Box>
@@ -94,13 +105,14 @@ export default function LoginScreen({ navigation } : LoginScreenProps) {
           rounded={3}
           p={8}
           variant="outline"
-          variantcolor={color.white}
+          variantcolor={color.dark}
+          hintColor={color.gray}
           onChangeText={setPassword}
         />
       </Box>
       <Center p={6} w={"80%"} mt={10}>
         {loading ? <ActivityIndicator /> : <Button
-          
+
           style={{
             backgroundColor: color.blue,
             padding: 8,

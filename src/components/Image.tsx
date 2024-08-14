@@ -14,8 +14,8 @@ export default ({
   mr,
 }: {
   source: any;
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
   rounded?: number;
   style?: any;
   m?: number;

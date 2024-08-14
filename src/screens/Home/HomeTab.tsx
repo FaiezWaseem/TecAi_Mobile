@@ -5,17 +5,17 @@ import Box from "../../components/Box";
 import Text from "../../components/Text";
 import { ScrollView, Image, StatusBar, ActivityIndicator } from "react-native";
 import color from "../../utility/Color"
-// import { Entypo } from '@expo/vector-icons';
-// import { Ionicons } from '@expo/vector-icons';
-// import { Feather } from "@expo/vector-icons";
+
 import Input from "../../components/Input";
 import Assignment from "./Assignment";
 import { getMarks, getMe, getMyAssignments, setNotificationToken, getMonthlyAttendance } from "../../utility/db"
-// import Course from "../../components/homeTab/Course";
+
 // import * as Device from 'expo-device';
 // import * as Notifications from 'expo-notifications';
 import { FontAwesome5 } from '@expo/vector-icons';
 
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import  AntDesign  from "react-native-vector-icons/AntDesign"
 // Notifications.setNotificationHandler({
 //   handleNotification: async () => ({
 //     shouldShowAlert: true,
@@ -117,7 +117,8 @@ export default function HomeTabScreen({ extraData }: any) {
               <Box w={'75%'}>
                 <Text color={color.white} fontSize={12}>
                   Welcome back
-                  {/* <Entypo name="thunder-cloud" size={16} color={color.white} /> */}
+                  <MaterialCommunityIcons name="home" size={16} color={color.white} />
+
                 </Text>
                 <Text fontWeight={"bold"} color={color.white} fontSize={16}>
                   {student.name}
@@ -138,7 +139,7 @@ export default function HomeTabScreen({ extraData }: any) {
                     borderColor: color.white,
                   }}
                 >
-                  {/* <Ionicons name="notifications-outline" size={24} color={color.white} /> */}
+                  <AntDesign name="notification" size={24} color={color.white} />
                 </PBox>
                 <PBox
                   bg={"rgba(255,255,255,0.5)"}
