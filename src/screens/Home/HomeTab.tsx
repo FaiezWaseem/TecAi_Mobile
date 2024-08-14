@@ -182,12 +182,7 @@ export default function HomeTabScreen({ extraData }: any) {
                   {/* <Feather name="search" size={24} color="white" /> */}
 
                 </Box>
-                <Input
-                  m={18}
-                  placeholder={"Search your Courses"}
-                  hintColor={color.white}
-                  color={color.white}
-                />
+                <Text>Notice Board</Text>
               </Box>
             </Center>
 
